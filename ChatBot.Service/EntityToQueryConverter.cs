@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChatBot.Data;
-using ChatBot.Data.Base;
+﻿using ChatBot.Data;
 using ChatBot.Data.BotEntityModels;
-using ChatBot.Data.DTL;
 using ChatBot.Data.DTL.Enums;
 using ChatBot.Data.QueryOptions;
 
@@ -22,11 +15,11 @@ namespace ChatBot.Service
 
             foreach (var entity in entities)
             {
-                if(result.ClothTypeId == 0)
+                if(result.ClothTypeId is null or 0)
                     result.ClothTypeId = ((int?) entity.Entity?.GetValueFromName<ClothTypeEnum>()) ?? 0;
-                if(result.ColorTypeId == 0)
+                if(result.ColorTypeId is null or 0)
                     result.ColorTypeId = ((int?)entity.Entity?.GetValueFromName<ColorTypeEnum>()) ?? 0;
-                if(result.MaterialTypeId == 0)
+                if(result.MaterialTypeId is null or 0)
                     result.MaterialTypeId = ((int?)entity.Entity?.GetValueFromName<MaterialTypeEnum>()) ?? 0;
             }
 

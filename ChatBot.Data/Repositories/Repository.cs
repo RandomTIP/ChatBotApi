@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChatBot.Data.BotEntityModels;
-using ChatBot.Data.DataContext;
+﻿using ChatBot.Data.DataContext;
 using ChatBot.Data.DTL;
 using ChatBot.Data.QueryOptions;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatBot.Data.Repositories
 {
@@ -24,21 +18,27 @@ namespace ChatBot.Data.Repositories
         {
             if (option == null) return null;
 
-            if (option.ClothTypeId == null) return null;
+            if (option.ClothTypeId is null or 0) return null;
 
-            var list = _chatBotContext.Products.Where(x => x.ClothTypeId == option.ClothTypeId);
+            var list = _chatBotContext.Products
+                .Where(x => x.ClothTypeId == option.ClothTypeId)
+                .Include(x => x.SizeUsType)
+                .Include(x => x.ClothType)
+                .Include(x => x.SizeEuType)
+                .Include(x => x.MaterialType)
+                .Include(x => x.ColorType).ToList();
 
-            if (option.ColorTypeId == null) return list.ToList();
+            if (option.ColorTypeId is null or 0) return list.ToList();
 
-            list = list.Where(x => x.ColorTypeId == option.ColorTypeId);
+            list = list.Where(x => x.ColorTypeId == option.ColorTypeId).ToList();
 
-            if (option.MaterialTypeId == null) return list.ToList();
+            if (option.SizeEuTypeId is null or 0 && option.SizeUsTypeId is null or 0) return list.ToList();
 
-            list = list.Where(x => x.MaterialTypeId == option.MaterialTypeId);
+            list = list.Where(x => x.SizeEuTypeId == option.SizeEuTypeId || x.SizeUsTypeId == option.SizeUsTypeId).ToList();
 
-            if(option.SizeEuTypeId == null && option.SizeUsTypeId == null) return list.ToList();
+            if (option.MaterialTypeId is null or 0) return list.ToList();
 
-            list = list.Where(x => x.SizeEuTypeId == option.SizeEuTypeId || x.SizeUsTypeId == option.SizeUsTypeId);
+            list = list.Where(x => x.MaterialTypeId == option.MaterialTypeId).ToList();
 
             return list.ToList();
         }

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChatBot.Data.DTL;
+﻿using ChatBot.Data.DTL;
 using ChatBot.Data.DTL.Enums;
-using System.Linq;
 
 namespace ChatBot.Data
 {

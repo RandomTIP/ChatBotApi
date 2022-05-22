@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using ChatBot.Data.Base;
+﻿using ChatBot.Data.Base;
 
 #pragma warning disable CS8618
 

@@ -1,4 +1,5 @@
 ﻿using ChatBot.Data.Base;
+using ChatBot.Data.DTL.Enums;
 
 #pragma warning disable CS8618
 
@@ -24,7 +25,7 @@ namespace ChatBot.Data.DTL
         public int ColorTypeId { get; set; }
         public ColorType? ColorType { get; set; }
 
-        public int UserCartId { get; set; }
+        public int? UserCartId { get; set; }
         public UserCart? UserCart { get; set; }
 
         public double Price { get; set; }

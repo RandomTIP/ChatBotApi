@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using ChatBot.Data.DTL.Enums;
 
 namespace ChatBot.Data.BotEntityModels
 {

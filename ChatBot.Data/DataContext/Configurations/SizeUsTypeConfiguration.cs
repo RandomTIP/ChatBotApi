@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ChatBot.Data.DataContext.Configurations
 {
-    public class ClothTypeConfiguration : IEntityTypeConfiguration<ClothType>
+    public class SizeUsTypeConfiguration : IEntityTypeConfiguration<SizeUsType>
     {
-        public void Configure(EntityTypeBuilder<ClothType> builder)
+        public void Configure(EntityTypeBuilder<SizeUsType> builder)
         {
-            var enumValues = typeof(ClothTypeEnum).GetEnumValues();
+            var enumValues = typeof(SizeUsTypeEnum).GetEnumValues();
 
             foreach (var enumValue in enumValues)
             {
-                builder.HasData(new {Id = (int) enumValue, Name = enumValue.ToString()});
+                builder.HasData(new { Id = (int)enumValue, Value = enumValue.ToString() });
             }
         }
     }

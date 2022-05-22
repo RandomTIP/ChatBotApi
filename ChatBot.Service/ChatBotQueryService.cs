@@ -1,6 +1,4 @@
 ﻿using ChatBot.Data.BotEntityModels;
-using ChatBot.Data.DTL;
-using ChatBot.Data.DTL.Enums;
 using ChatBot.Data.Repositories;
 
 namespace ChatBot.Service
