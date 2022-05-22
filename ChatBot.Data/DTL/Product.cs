@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChatBot.Data.Base;
+﻿using ChatBot.Data.Base;
+
 #pragma warning disable CS8618
 
-namespace ChatBot.Data
+namespace ChatBot.Data.DTL
 {
     public sealed class Product : EntityBase
     {

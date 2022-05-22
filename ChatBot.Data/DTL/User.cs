@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChatBot.Data.Base;
+﻿using ChatBot.Data.Base;
 
-namespace ChatBot.Data
+namespace ChatBot.Data.DTL
 {
     public class User : EntityBase
     {

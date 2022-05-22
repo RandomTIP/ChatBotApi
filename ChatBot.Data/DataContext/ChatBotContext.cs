@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ChatBot.Data.DTL;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatBot.Data.DataContext
 {

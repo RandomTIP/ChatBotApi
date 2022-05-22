@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChatBot.Common\ChatBot.Common.csproj" />
-    <ProjectReference Include="..\ChatBot.Data\ChatBot.Data.csproj" />
+    <ProjectReference Include="..\ChatBot.Service\ChatBot.Service.csproj" />
   </ItemGroup>
 
 </Project>
