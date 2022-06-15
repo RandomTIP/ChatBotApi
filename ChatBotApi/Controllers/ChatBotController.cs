@@ -28,11 +28,11 @@ namespace ChatBot.Api.Controllers
             return queryResponse;
         }
 
-        [HttpGet("SizeUsFromSizeEu")]
-        public SizeUsType GetSizeUsFromSizeEu([FromQuery] int sizeEu, CancellationToken cancellationToken)
-        {
-            var sizeEuType = new SizeEuType() {Value = sizeEu};
-            return new SizeUsType() {Value = sizeEuType.GetSizeUsValue() ?? throw new InvalidOperationException()};
-        }
+        //[HttpGet("SizeUsFromSizeEu")]
+        //public SizeUsType GetSizeUsFromSizeEu([FromQuery] int sizeEu, CancellationToken cancellationToken)
+        //{
+        //    var sizeEuType = new SizeEuType() {Value = sizeEu};
+        //    return new SizeUsType() {Value = sizeEuType.GetSizeUsValue() ?? throw new InvalidOperationException()};
+        //}
     }
 }
