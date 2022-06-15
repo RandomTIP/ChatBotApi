@@ -26,7 +26,9 @@ namespace ChatBot.Data.Repositories
                 .Include(x => x.ClothType)
                 .Include(x => x.SizeEuType)
                 .Include(x => x.MaterialType)
-                .Include(x => x.ColorType).ToList();
+                .Include(x => x.ColorType)
+                .Include(x => x.ProductPhoto)
+                .ToList();
 
             if (option.ColorTypeId is null or 0) return list.ToList();
 

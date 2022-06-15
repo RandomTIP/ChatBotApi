@@ -18,6 +18,7 @@ namespace ChatBot.Data.DataContext
         public DbSet<ColorType> ColorTypes { get; set; }
         public DbSet<SizeEuType> SizeEuTypes { get; set; }
         public DbSet<SizeUsType> SizeUsTypes { get; set; }
+        public DbSet<ProductPhoto> ProductPhotos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
