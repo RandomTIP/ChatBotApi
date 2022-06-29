@@ -28,6 +28,13 @@ namespace ChatBot.Api.Controllers
             return queryResponse;
         }
 
+        [HttpPost("image-upload")]
+        public async Task Image([FromForm] IFormFile image, CancellationToken cancellationToken)
+        {
+            var res = image;
+        }
+
+
         //[HttpGet("SizeUsFromSizeEu")]
         //public SizeUsType GetSizeUsFromSizeEu([FromQuery] int sizeEu, CancellationToken cancellationToken)
         //{

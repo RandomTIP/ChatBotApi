@@ -30,17 +30,14 @@ namespace ChatBot.Data.Repositories
                 .Include(x => x.ProductPhoto)
                 .ToList();
 
-            if (option.ColorTypeId is null or 0) return list.ToList();
+            if (option.ColorTypeId is not null or 0)
+                list = list.Where(x => x.ColorTypeId == option.ColorTypeId).ToList();
 
-            list = list.Where(x => x.ColorTypeId == option.ColorTypeId).ToList();
+            if (option.SizeEuTypeId is not null or 0 || option.SizeUsTypeId is not null or 0)
+                list = list.Where(x => x.SizeEuTypeId == option.SizeEuTypeId || x.SizeUsTypeId == option.SizeUsTypeId).ToList();
 
-            if (option.SizeEuTypeId is null or 0 && option.SizeUsTypeId is null or 0) return list.ToList();
-
-            list = list.Where(x => x.SizeEuTypeId == option.SizeEuTypeId || x.SizeUsTypeId == option.SizeUsTypeId).ToList();
-
-            if (option.MaterialTypeId is null or 0) return list.ToList();
-
-            list = list.Where(x => x.MaterialTypeId == option.MaterialTypeId).ToList();
+            if (option.MaterialTypeId is not null or 0)
+                list = list.Where(x => x.MaterialTypeId == option.MaterialTypeId).ToList();
 
             return list.ToList();
         }

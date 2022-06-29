@@ -1,6 +1,7 @@
 ﻿using ChatBot.Data;
 using ChatBot.Data.DataContext;
 using ChatBot.Service;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -22,6 +23,9 @@ namespace ChatBot.Api
             services.AddServices();
             services.AddHttpClient();
             services.AddControllers();
+            services.AddCors(policy =>
+                policy.AddPolicy("AllowSpecificPolicy", policy => policy.WithOrigins("http://localhost:4200")));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "ChatBot.Api", Version = "v1"});
@@ -47,6 +51,8 @@ namespace ChatBot.Api
             {
                 app.UseHsts();
             }
+
+            app.UseCors("AllowSpecificPolicy");
 
             app.MigrateDatabase();
 
