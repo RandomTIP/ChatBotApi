@@ -27,7 +27,6 @@ namespace ChatBot.Data.Repositories
                 .Include(x => x.SizeEuType)
                 .Include(x => x.MaterialType)
                 .Include(x => x.ColorType)
-                .Include(x => x.ProductPhoto)
                 .ToList();
 
             if (option.ColorTypeId is not null or 0)

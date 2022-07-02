@@ -1,4 +1,5 @@
-﻿using ChatBot.Common;
+﻿using System.Net.Http.Headers;
+using ChatBot.Common;
 using ChatBot.Data;
 using ChatBot.Data.BotEntityModels;
 using ChatBot.Data.DTL;
@@ -31,9 +32,30 @@ namespace ChatBot.Api.Controllers
         [HttpPost("image-upload")]
         public async Task Image([FromForm] IFormFile image, CancellationToken cancellationToken)
         {
-            var res = image;
-        }
+            try
+            {
+                await using var imageContent = image.OpenReadStream();
+                HttpContent fileStreamContent = new StreamContent(imageContent);
+                fileStreamContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    { Name = image.Name, FileName = image.FileName };
+                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                using var formData = new MultipartFormDataContent();
+                formData.Add(fileStreamContent);
+                var request = new HttpRequestMessage(HttpMethod.Get, HttpConfiguration.ImageRecognitionRoute)
+                {
+                    Content = formData
+                };
 
+                var response = await _httpClient.SendAsync(request, cancellationToken);
+
+                var res = await response.Content.ReadAsStringAsync(cancellationToken);
+                var pp = res;
+            }
+            catch (Exception e)
+            {
+                e.GetType();
+            }
+        }
 
         //[HttpGet("SizeUsFromSizeEu")]
         //public SizeUsType GetSizeUsFromSizeEu([FromQuery] int sizeEu, CancellationToken cancellationToken)

@@ -9,9 +9,7 @@ namespace ChatBot.Data.DTL
     {
         public string Name { get; set; }
         public string? Description { get; set; }
-        
-        public int? ProductPhotoId { get; set; }
-        public ProductPhoto? ProductPhoto { get; set; }
+        public string? ProductPhoto { get; set; }
 
         public int SizeEuTypeId { get; set; }
         public SizeEuType? SizeEuType { get; set; }
