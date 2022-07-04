@@ -5,6 +5,7 @@ using ChatBot.Data.BotEntityModels;
 using ChatBot.Data.DTL;
 using ChatBot.Service;
 using Microsoft.AspNetCore.Mvc;
+using RestSharp;
 
 namespace ChatBot.Api.Controllers
 {
@@ -21,6 +22,12 @@ namespace ChatBot.Api.Controllers
             _chatBotQueryService = chatBotQueryService;
         }
 
+        [HttpPost("Insert")]
+        public async Task<int> InsertCloth([FromBody] Product product, CancellationToken cancellationToken = default)
+        {
+            return _chatBotQueryService.InsertProduct(product);
+        }
+
         [HttpGet("ParseText")]
         public async Task<ServiceResponse?> RequestParse([FromQuery]string text, CancellationToken cancellationToken)
         {
@@ -30,38 +37,11 @@ namespace ChatBot.Api.Controllers
         }
 
         [HttpPost("image-upload")]
-        public async Task Image([FromForm] IFormFile image, CancellationToken cancellationToken)
+        public async Task<ServiceResponse> Image([FromForm] IFormFile image, CancellationToken cancellationToken)
         {
-            try
-            {
-                await using var imageContent = image.OpenReadStream();
-                HttpContent fileStreamContent = new StreamContent(imageContent);
-                fileStreamContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    { Name = image.Name, FileName = image.FileName };
-                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                using var formData = new MultipartFormDataContent();
-                formData.Add(fileStreamContent);
-                var request = new HttpRequestMessage(HttpMethod.Get, HttpConfiguration.ImageRecognitionRoute)
-                {
-                    Content = formData
-                };
-
-                var response = await _httpClient.SendAsync(request, cancellationToken);
-
-                var res = await response.Content.ReadAsStringAsync(cancellationToken);
-                var pp = res;
-            }
-            catch (Exception e)
-            {
-                e.GetType();
-            }
+            var client = new RestClient("http://localhost:5050/files");
+            var imageScores = await client.ImageRecognitionRequest<ImageScore>(image, cancellationToken);
+            return _chatBotQueryService.RecognizeImage(imageScores);
         }
-
-        //[HttpGet("SizeUsFromSizeEu")]
-        //public SizeUsType GetSizeUsFromSizeEu([FromQuery] int sizeEu, CancellationToken cancellationToken)
-        //{
-        //    var sizeEuType = new SizeEuType() {Value = sizeEu};
-        //    return new SizeUsType() {Value = sizeEuType.GetSizeUsValue() ?? throw new InvalidOperationException()};
-        //}
     }
 }

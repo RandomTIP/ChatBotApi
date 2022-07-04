@@ -4,6 +4,6 @@ public enum ClothTypeEnum
 {
     Pants = 1,
     Dress = 2,
-    Shoe = 3,
+    Shirt = 3,
     Hat = 4,
 }

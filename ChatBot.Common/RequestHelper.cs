@@ -1,6 +1,9 @@
 ﻿using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http;
+using RestSharp;
 
 namespace ChatBot.Common
 {
@@ -21,6 +24,28 @@ namespace ChatBot.Common
             TResponse? response = JsonSerializer.Deserialize<TResponse>(content);
 
             return response;
+        }
+
+        public static async Task<TResponse?> ImageRecognitionRequest<TResponse>(this RestClient client, IFormFile image,
+            CancellationToken cancellationToken)
+        {
+            var request = new RestRequest() { Method = Method.Get };
+            using var str = new MemoryStream();
+            await image.CopyToAsync(str, cancellationToken);
+            var arr = str.ToArray();
+            request.AddFile("files", arr, image.FileName, image.ContentType);
+            var response = await client.ExecuteAsync(request, cancellationToken);
+            TResponse? res = default;
+            try
+            {
+                res = JsonSerializer.Deserialize<TResponse>(response.Content);
+            }
+            catch (Exception e)
+            {
+                e.GetType();
+            }
+
+            return res;
         }
     }
 }

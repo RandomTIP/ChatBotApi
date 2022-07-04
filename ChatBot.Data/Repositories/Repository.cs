@@ -14,6 +14,12 @@ namespace ChatBot.Data.Repositories
             _chatBotContext = chatBotContext;
         }
 
+        public int Insert(Product product)
+        {
+            var res = _chatBotContext.Products.Add(product);
+            return res.Entity.Id;
+        }
+
         public List<Product>? GetProductList(QueryOption? option)
         {
             if (option == null) return null;
@@ -29,16 +35,21 @@ namespace ChatBot.Data.Repositories
                 .Include(x => x.ColorType)
                 .ToList();
 
-            if (option.ColorTypeId is not null or 0)
+            if (option.ColorTypeId is > 0)
                 list = list.Where(x => x.ColorTypeId == option.ColorTypeId).ToList();
 
-            if (option.SizeEuTypeId is not null or 0 || option.SizeUsTypeId is not null or 0)
+            if (option.SizeEuTypeId is > 0 || option.SizeUsTypeId is > 0)
                 list = list.Where(x => x.SizeEuTypeId == option.SizeEuTypeId || x.SizeUsTypeId == option.SizeUsTypeId).ToList();
 
-            if (option.MaterialTypeId is not null or 0)
+            if (option.MaterialTypeId is > 0)
                 list = list.Where(x => x.MaterialTypeId == option.MaterialTypeId).ToList();
 
             return list.ToList();
+        }
+
+        public Product? GetProductByPhoto(string? photo)
+        {
+            return photo == null ? null : _chatBotContext.Products.FirstOrDefault(x => x.ProductPhoto == photo);
         }
     }
 }
