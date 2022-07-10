@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChatBot.Data.Migrations
 {
     [DbContext(typeof(ChatBotContext))]
-    [Migration("20220702201004_PhotoLogicUpdate")]
-    partial class PhotoLogicUpdate
+    [Migration("20220710195730_AddData")]
+    partial class AddData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,7 +56,7 @@ namespace ChatBot.Data.Migrations
                         new
                         {
                             Id = 3,
-                            Name = "Shoe"
+                            Name = "Shirt"
                         },
                         new
                         {
@@ -937,6 +937,7 @@ namespace ChatBot.Data.Migrations
                             MaterialTypeId = 2,
                             Name = "მასიმო დუტის შარვალი",
                             Price = 399.99000000000001,
+                            ProductPhoto = "1d407629-87e5-4702-b9fc-e3b19de93570.jpg",
                             SizeEuTypeId = 39,
                             SizeUsTypeId = 38
                         },
@@ -944,11 +945,12 @@ namespace ChatBot.Data.Migrations
                         {
                             Id = 2,
                             ClothTypeId = 2,
-                            ColorTypeId = 46,
+                            ColorTypeId = 11,
                             Description = "ყველაზე ძერსკი კაბა",
                             MaterialTypeId = 4,
                             Name = "ზარას კაბა",
                             Price = 899.99000000000001,
+                            ProductPhoto = "6b779a54-4cdc-4205-ba1f-9597c779a683.jpg",
                             SizeEuTypeId = 36,
                             SizeUsTypeId = 36
                         },
@@ -956,11 +958,12 @@ namespace ChatBot.Data.Migrations
                         {
                             Id = 3,
                             ClothTypeId = 3,
-                            ColorTypeId = 120,
-                            Description = "ყველაზე ხარისხიანი კეტები",
-                            MaterialTypeId = 1,
-                            Name = "Eco კეტები",
+                            ColorTypeId = 13,
+                            Description = "ყველაზე ხარისხიანი პერანგი",
+                            MaterialTypeId = 2,
+                            Name = "მაიკლ კორსის პერანგი",
                             Price = 299.99000000000001,
+                            ProductPhoto = "0d293c69-ba4f-4ffc-b6b9-fa05316a02c5.jpg",
                             SizeEuTypeId = 43,
                             SizeUsTypeId = 42
                         },
@@ -973,8 +976,152 @@ namespace ChatBot.Data.Migrations
                             MaterialTypeId = 7,
                             Name = "ლუი ვიტონის ქუდი",
                             Price = 99.989999999999995,
+                            ProductPhoto = "a47cd387-993a-4e23-b8a8-259d036cf37b.jpg",
                             SizeEuTypeId = 40,
                             SizeUsTypeId = 40
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClothTypeId = 3,
+                            ColorTypeId = 11,
+                            Description = "ძალიან ლამაზი პერანგი",
+                            MaterialTypeId = 2,
+                            Name = "ლამაზი პერანგი",
+                            Price = 399.99000000000001,
+                            ProductPhoto = "0d293c69-ba4f-4ffc-b6b9-fa05316a02c5.jpg",
+                            SizeEuTypeId = 39,
+                            SizeUsTypeId = 38
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClothTypeId = 2,
+                            ColorTypeId = 111,
+                            Description = "ყველაზე ლამაზი კაბა",
+                            MaterialTypeId = 4,
+                            Name = "ვარდისფერი კაშმირის კაბა",
+                            Price = 99.989999999999995,
+                            ProductPhoto = "5cb8b297-de57-4ee2-984a-7c9cdc748558.jpg",
+                            SizeEuTypeId = 36,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ClothTypeId = 2,
+                            ColorTypeId = 11,
+                            Description = "ყველაზე ლამაზი კაბა",
+                            MaterialTypeId = 2,
+                            Name = "ლურჯი ბამბის კაბა",
+                            Price = 29.989999999999998,
+                            ProductPhoto = "6e143162-9472-43c3-8db1-04eeea838ae8.jpg",
+                            SizeEuTypeId = 36,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ClothTypeId = 2,
+                            ColorTypeId = 107,
+                            Description = "მოდური კაბა",
+                            MaterialTypeId = 2,
+                            Name = "მუქი ლურჯი ბამბის კაბა",
+                            Price = 29.989999999999998,
+                            ProductPhoto = "6eaff8d0-517f-4fad-ad54-4249b8c53ff9.jpg",
+                            SizeEuTypeId = 36,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ClothTypeId = 2,
+                            ColorTypeId = 138,
+                            Description = "მოდური კაბა",
+                            MaterialTypeId = 4,
+                            Name = "თეთრი კაბა",
+                            Price = 59.990000000000002,
+                            ProductPhoto = "7fc487f9-81a1-4285-aef9-45574cc8adce.jpg",
+                            SizeEuTypeId = 36,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ClothTypeId = 1,
+                            ColorTypeId = 11,
+                            Description = "შესანიშნავი შარვალი",
+                            MaterialTypeId = 1,
+                            Name = "მუქი ლურჯი შარვალი",
+                            Price = 159.99000000000001,
+                            ProductPhoto = "0ccc318a-7d69-4d7f-a442-aac1f88bc453.jpg",
+                            SizeEuTypeId = 36,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ClothTypeId = 1,
+                            ColorTypeId = 11,
+                            Description = "შესანიშნავი შარვალი",
+                            MaterialTypeId = 1,
+                            Name = "ტყავის ლურჯი შარვალი",
+                            Price = 129.99000000000001,
+                            ProductPhoto = "8acbe013-6f78-400b-a9e6-66144cf8574d.jpg",
+                            SizeEuTypeId = 36,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ClothTypeId = 1,
+                            ColorTypeId = 115,
+                            Description = "შესანიშნავი შარვალი",
+                            MaterialTypeId = 3,
+                            Name = "აბრეშუმის წითელი შარვალი",
+                            Price = 2259.9899999999998,
+                            ProductPhoto = "119518b0-abfc-49a1-88dc-016f2dbd17ff.jpg",
+                            SizeEuTypeId = 35,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ClothTypeId = 1,
+                            ColorTypeId = 140,
+                            Description = "ყველაზე მოდური შარვალი",
+                            MaterialTypeId = 3,
+                            Name = "აბრეშუმის ყვითელი შარვალი",
+                            Price = 1259.99,
+                            ProductPhoto = "300963e8-f469-471c-a7dd-9eed99ddad4f.jpg",
+                            SizeEuTypeId = 36,
+                            SizeUsTypeId = 36
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ClothTypeId = 4,
+                            ColorTypeId = 115,
+                            Description = "ყველაზე მოდური შარვალი",
+                            MaterialTypeId = 1,
+                            Name = "წითელი ქუდი",
+                            Price = 259.99000000000001,
+                            ProductPhoto = "1febd681-151b-4c8c-baff-ddc52d16c6c0.jpg",
+                            SizeEuTypeId = 39,
+                            SizeUsTypeId = 38
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClothTypeId = 4,
+                            ColorTypeId = 115,
+                            Description = "მაღალი ხარისხის წითელი ქუდი",
+                            MaterialTypeId = 1,
+                            Name = "ნაიკის ქუდი",
+                            Price = 259.99000000000001,
+                            ProductPhoto = "2f96b4e8-3af7-4b3f-9488-69a51df7a917.jpg",
+                            SizeEuTypeId = 39,
+                            SizeUsTypeId = 38
                         });
                 });
 

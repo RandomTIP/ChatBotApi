@@ -4,7 +4,7 @@
 
 namespace ChatBot.Data.Migrations
 {
-    public partial class renewDatabase : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -123,6 +123,7 @@ namespace ChatBot.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductPhoto = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SizeEuTypeId = table.Column<int>(type: "int", nullable: false),
                     SizeUsTypeId = table.Column<int>(type: "int", nullable: false),
                     ClothTypeId = table.Column<int>(type: "int", nullable: false),
@@ -178,7 +179,7 @@ namespace ChatBot.Data.Migrations
                 {
                     { 1, null, "Pants" },
                     { 2, null, "Dress" },
-                    { 3, null, "Shoe" },
+                    { 3, null, "Shirt" },
                     { 4, null, "Hat" }
                 });
 
@@ -415,13 +416,14 @@ namespace ChatBot.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "ClothTypeId", "ColorTypeId", "Description", "MaterialTypeId", "Name", "Price", "SizeEuTypeId", "SizeUsTypeId", "UserCartId" },
+                columns: new[] { "Id", "ClothTypeId", "ColorTypeId", "Description", "MaterialTypeId", "Name", "Price", "ProductPhoto", "SizeEuTypeId", "SizeUsTypeId", "UserCartId" },
                 values: new object[,]
                 {
-                    { 1, 1, 9, "ყველაზე მაგარი ბრენდული შარვალი", 2, "მასიმო დუტის შარვალი", 399.99000000000001, 39, 38, null },
-                    { 2, 2, 46, "ყველაზე ძერსკი კაბა", 4, "ზარას კაბა", 899.99000000000001, 36, 36, null },
-                    { 3, 3, 120, "ყველაზე ხარისხიანი კეტები", 1, "Eco კეტები", 299.99000000000001, 43, 42, null },
-                    { 4, 4, 107, "ყველაზე ლამაზი ქუდი", 7, "ლუი ვიტონის ქუდი", 99.989999999999995, 40, 40, null }
+                    { 1, 1, 9, "ყველაზე მაგარი ბრენდული შარვალი", 2, "მასიმო დუტის შარვალი", 399.99000000000001, "1d407629-87e5-4702-b9fc-e3b19de93570.jpg", 39, 38, null },
+                    { 2, 2, 46, "ყველაზე ძერსკი კაბა", 4, "ზარას კაბა", 899.99000000000001, "6b779a54-4cdc-4205-ba1f-9597c779a683.jpg", 36, 36, null },
+                    { 3, 3, 13, "ყველაზე ხარისხიანი პერანგი", 2, "მაიკლ კორსის პერანგი", 299.99000000000001, "0d293c69-ba4f-4ffc-b6b9-fa05316a02c5.jpg", 43, 42, null },
+                    { 4, 4, 107, "ყველაზე ლამაზი ქუდი", 7, "ლუი ვიტონის ქუდი", 99.989999999999995, "a47cd387-993a-4e23-b8a8-259d036cf37b.jpg", 40, 40, null },
+                    { 5, 3, 11, "ძალიან ლამაზი პერანგი", 2, "ლამაზი პერანგი", 399.99000000000001, "0d293c69-ba4f-4ffc-b6b9-fa05316a02c5.jpg", 39, 38, null }
                 });
 
             migrationBuilder.CreateIndex(

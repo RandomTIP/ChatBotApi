@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChatBot.Data.Migrations
 {
     [DbContext(typeof(ChatBotContext))]
-    [Migration("20220522150609_renewDatabase")]
-    partial class renewDatabase
+    [Migration("20220710191321_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,7 +56,7 @@ namespace ChatBot.Data.Migrations
                         new
                         {
                             Id = 3,
-                            Name = "Shoe"
+                            Name = "Shirt"
                         },
                         new
                         {
@@ -899,6 +899,9 @@ namespace ChatBot.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<string>("ProductPhoto")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("SizeEuTypeId")
                         .HasColumnType("int");
 
@@ -934,6 +937,7 @@ namespace ChatBot.Data.Migrations
                             MaterialTypeId = 2,
                             Name = "მასიმო დუტის შარვალი",
                             Price = 399.99000000000001,
+                            ProductPhoto = "1d407629-87e5-4702-b9fc-e3b19de93570.jpg",
                             SizeEuTypeId = 39,
                             SizeUsTypeId = 38
                         },
@@ -946,6 +950,7 @@ namespace ChatBot.Data.Migrations
                             MaterialTypeId = 4,
                             Name = "ზარას კაბა",
                             Price = 899.99000000000001,
+                            ProductPhoto = "6b779a54-4cdc-4205-ba1f-9597c779a683.jpg",
                             SizeEuTypeId = 36,
                             SizeUsTypeId = 36
                         },
@@ -953,11 +958,12 @@ namespace ChatBot.Data.Migrations
                         {
                             Id = 3,
                             ClothTypeId = 3,
-                            ColorTypeId = 120,
-                            Description = "ყველაზე ხარისხიანი კეტები",
-                            MaterialTypeId = 1,
-                            Name = "Eco კეტები",
+                            ColorTypeId = 13,
+                            Description = "ყველაზე ხარისხიანი პერანგი",
+                            MaterialTypeId = 2,
+                            Name = "მაიკლ კორსის პერანგი",
                             Price = 299.99000000000001,
+                            ProductPhoto = "0d293c69-ba4f-4ffc-b6b9-fa05316a02c5.jpg",
                             SizeEuTypeId = 43,
                             SizeUsTypeId = 42
                         },
@@ -970,8 +976,22 @@ namespace ChatBot.Data.Migrations
                             MaterialTypeId = 7,
                             Name = "ლუი ვიტონის ქუდი",
                             Price = 99.989999999999995,
+                            ProductPhoto = "a47cd387-993a-4e23-b8a8-259d036cf37b.jpg",
                             SizeEuTypeId = 40,
                             SizeUsTypeId = 40
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClothTypeId = 3,
+                            ColorTypeId = 11,
+                            Description = "ძალიან ლამაზი პერანგი",
+                            MaterialTypeId = 2,
+                            Name = "ლამაზი პერანგი",
+                            Price = 399.99000000000001,
+                            ProductPhoto = "0d293c69-ba4f-4ffc-b6b9-fa05316a02c5.jpg",
+                            SizeEuTypeId = 39,
+                            SizeUsTypeId = 38
                         });
                 });
 
